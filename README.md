@@ -4,7 +4,7 @@ Multi-user chat application with Frappe backend and Flutter client.
 
 ## Demo Video
 
-<video src="videos/Frappe_Chat.mp4" controls width="100%"></video>
+<video src="https://github.com/suman1406/Flutter-Multi-User-Chat-as-a-Frappe-Custom-App/raw/master/videos/Frappe_Chat.mp4" controls width="100%"></video>
 
 ## Features
 
