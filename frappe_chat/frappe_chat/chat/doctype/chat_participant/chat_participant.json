@@ -1,0 +1,30 @@
+{
+    "name": "Chat Participant",
+    "module": "Chat",
+    "doctype": "DocType",
+    "istable": 1,
+    "is_submittable": 0,
+    "engine": "InnoDB",
+    "fields": [
+        {
+            "fieldname": "user",
+            "fieldtype": "Link",
+            "label": "User",
+            "options": "User",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "joined_at",
+            "fieldtype": "Datetime",
+            "label": "Joined At",
+            "default": "Now"
+        },
+        {
+            "fieldname": "last_read_at",
+            "fieldtype": "Datetime",
+            "label": "Last Read At"
+        }
+    ],
+    "permissions": []
+}

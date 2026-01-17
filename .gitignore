@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Flutter
+flutter_chat/.dart_tool/
+flutter_chat/.packages
+flutter_chat/build/
+flutter_chat/.flutter-plugins
+flutter_chat/.flutter-plugins-dependencies
+*.iml
+
+# Frappe
+frappe_chat/*.egg-info/
+*.log
+hs_err_pid*.log
+
+# Docker volumes
+mariadb_data/
+frappe_sites/
+frappe_apps/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Environment
+.env
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+#docs
+/docs/DEMO.md

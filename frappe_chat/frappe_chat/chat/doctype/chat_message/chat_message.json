@@ -1,0 +1,63 @@
+{
+    "name": "Chat Message",
+    "module": "Chat",
+    "doctype": "DocType",
+    "is_submittable": 0,
+    "track_changes": 0,
+    "engine": "InnoDB",
+    "sort_field": "creation",
+    "sort_order": "ASC",
+    "fields": [
+        {
+            "fieldname": "chat",
+            "fieldtype": "Link",
+            "label": "Chat",
+            "options": "Chat",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "sender",
+            "fieldtype": "Link",
+            "label": "Sender",
+            "options": "User",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "content",
+            "fieldtype": "Text",
+            "label": "Content",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "message_type",
+            "fieldtype": "Select",
+            "label": "Message Type",
+            "options": "text\nimage\nfile",
+            "default": "text"
+        },
+        {
+            "fieldname": "is_read",
+            "fieldtype": "Check",
+            "label": "Is Read",
+            "default": 0
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        },
+        {
+            "role": "Chat User",
+            "read": 1,
+            "write": 0,
+            "create": 1
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "default_site": "chat.localhost",
+    "redis_cache": "redis://frappe-redis-cache:6379",
+    "redis_queue": "redis://frappe-redis-queue:6379",
+    "redis_socketio": "redis://frappe-redis-queue:6379",
+    "allow_cors": [
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+        "http://localhost:*",
+        "http://127.0.0.1:*"
+    ],
+    "max_file_size": 10485760
+}

@@ -1,0 +1,74 @@
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: frappe-mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: frappe_root
+      MYSQL_DATABASE: frappe
+      MYSQL_USER: frappe
+      MYSQL_PASSWORD: frappe_pass
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pfrappe_root" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis-cache:
+    image: redis:7-alpine
+    container_name: frappe-redis-cache
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis-queue:
+    image: redis:7-alpine
+    container_name: frappe-redis-queue
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+
+  frappe:
+    image: frappe/erpnext:v15
+    container_name: frappe-web
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_healthy
+    environment:
+      - SHELL=/bin/bash
+      - DB_HOST=frappe-mariadb
+      - DB_PORT=3306
+      - REDIS_CACHE=redis://frappe-redis-cache:6379
+      - REDIS_QUEUE=redis://frappe-redis-queue:6379
+      - SOCKETIO_PORT=9000
+    volumes:
+      - frappe_sites:/home/frappe/frappe-bench/sites
+      - ./frappe_chat:/frappe_chat_source:ro
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
+      - ./common_site_config.json:/home/frappe/frappe-bench/sites/common_site_config.json:ro
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    stdin_open: true
+    tty: true
+    command: [ "/bin/bash", "/docker-entrypoint.sh" ]
+
+volumes:
+  mariadb_data:
+  frappe_sites:
