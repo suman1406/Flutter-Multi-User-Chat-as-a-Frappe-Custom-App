@@ -4,14 +4,14 @@ Multi-user chat application with Frappe backend and Flutter client.
 
 ## Demo Video
 
-<video src="https://github.com/suman1406/Flutter-Multi-User-Chat-as-a-Frappe-Custom-App/raw/master/videos/Frappe_Chat.mp4" controls width="100%"></video>
+[📹 Watch Demo Video](https://github.com/suman1406/Flutter-Multi-User-Chat-as-a-Frappe-Custom-App/releases/download/v1.0/Frappe_Chat.mp4)
 
 ## Features
 
 - Token-based authentication via Frappe
 - Real-time messaging (adaptive polling)
 - Rate limiting on all endpoints
-- One-on-one and group chats
+- One-on-one chats
 - Message persistence
 
 ## Quick Start
